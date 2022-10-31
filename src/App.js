@@ -1,29 +1,34 @@
 import "./App.css";
 import React from "react";
-import Box from "./components/box";
 import { useState } from "react";
+import Box from "./components/box";
 
 function App() {
   const [user, setUser] = useState();
   const [age, setAge] = useState();
+
+  const array = [
+    { name: "Fake Name", age: "25" },
+    { name: "Fake Guy 2", age: "20" },
+    { name: "Another Faker!", age: "66" },
+  ];
+
+  // for (let i = 0; i < array.length; i++) {
+  //   console.log(array[i]);
+  // }
+  // array.map((item, index) => {
+  //   console.log(item);
+  // });
+
   return (
     <div className="App">
-      <input onChange={(e) => setUser(e.target.value)} />
-      <input onChange={(e) => setAge(e.target.value)} />
-
-      {user ? (
-        <div>
-          <h1>Look at this great header</h1>
-          <Box name="Big Ben" age="163" />
-          <Box name="Machu Picchu" age="572" />
-          <Box name="Burj Khalifa" age="13" />
-          <Box name={user} age={age} />
-        </div>
-      ) : (
-        <div>
-          <h1>This is the else part of the statement</h1>
-        </div>
-      )}
+      {array.map((item, index) => {
+        return (
+          <div>
+            <Box name={item.name} age={item.age} />
+          </div>
+        );
+      })}
     </div>
   );
 }
